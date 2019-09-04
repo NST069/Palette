@@ -13,6 +13,13 @@ namespace Palette.Viewmodels
     class MainViewModel : INotifyPropertyChanged
     {
         private String path;
+        public String Path {
+            get { return path; }
+            set {
+                path = value;
+                OnPropertyChanged(nameof(Path));
+            }
+        }
 
         private String _info;
         public String Info {
@@ -50,8 +57,9 @@ namespace Palette.Viewmodels
                         {
                             ImageInfo = new Models.ImageInfo(Image_Path);
                             Info += "";
-                            Colors = ImageInfo.GetPrimaryColors(5);
+                            Colors = ImageInfo.GetPrimaryColors(20);
                         });
+                        Path = Image_Path;
                     }
                 });
             }

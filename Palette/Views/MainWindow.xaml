@@ -25,9 +25,18 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <ListBox Grid.Column="0" Name="lb" Width="100" ItemsSource="{Binding Colors}"/>
-                <!--<Label Grid.Column="1" Background="{Binding ElementName=lb, Path=DataContext.}"/>-->
-
+                <ListView Grid.Column="0" Name="lb" Width="100" ItemsSource="{Binding Colors}" HorizontalContentAlignment="Stretch">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Width="100" Height="100">
+                                <Label.Background>
+                                    <SolidColorBrush Color="{Binding Mode=OneWay}"/>
+                                </Label.Background>
+                            </Label>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Image Grid.Column="1" Source="{Binding Path}"/>
             </Grid>
         </Grid>
     </Grid>
